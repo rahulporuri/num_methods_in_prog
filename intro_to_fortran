@@ -2,3 +2,13 @@ function definitions
 variable definitions
 loading variables and saving variables
 loops and function calls
+
+Program function_name
+	Implicit None
+	Real(8) :: var1, var2, var3
+	Real(8) :: var4 = 5
+
+Print *, 'print to user'
+Print *, 'var1 =', var1
+Read *, var1
+End Program function_name

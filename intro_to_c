@@ -17,6 +17,15 @@ printf("var = %d",var)
 puts("to print a string")
 %f, %lf, %c, %s
 
+FILE *fp
+#FILE *fopen(const char *filename, const char *mode)
+fp = fopen("file_name","r/w/a")
+char buffer[20]
+fscanf(fp,'%s',buffer)
+#int fclose(FILE *a_file)
+fclose(fp)
+#fgetc, fputc, fgets, fputs
+
 need to add how to load data, from raw input during execution, from the command line and from files
 also how to print output to files
 pointers, array pointers and file pointers
