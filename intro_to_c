@@ -1,0 +1,24 @@
+http://apps.nrbook.com/empanel/index.html#
+#include <stdio.h>
+#include <math.h>
+#include "file.h"
+int main(void){ ... return 0;}
+void main{}
+double func(double input1, double input2){ ... return result}
+int, float, double
+double *var_pointer
+var_pointer = &var
+printf("the value of var is %d", *var_pointer)
+* is to point to the value at the address location and
+& is to know the address location of the variable
+for (i=0;i<N;i++){}
+scanf("%d",&a)
+printf("var = %d",var)
+puts("to print a string")
+%f, %lf, %c, %s
+
+need to add how to load data, from raw input during execution, from the command line and from files
+also how to print output to files
+pointers, array pointers and file pointers
+dynamic memory allocation
+linking random libraries, like math.h, while compilation

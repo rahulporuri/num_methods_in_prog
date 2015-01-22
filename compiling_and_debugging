@@ -1,0 +1,15 @@
+gcc file.c
+gcc -o file.o file.c
+gcc -g -o file.o file.c
+gcc -o final.o file1.c file2.c
+gcc -c file1.o file1.c
+gcc -c file2.o file2.c
+gcc -o final.o file1.o file2.o
+https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/Warning-Options.html#Warning-Options
+
+r for run
+n for next 
+print var
+b for break
+
+make files
