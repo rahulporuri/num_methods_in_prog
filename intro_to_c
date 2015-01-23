@@ -6,12 +6,19 @@ int main(void){ ... return 0;}
 void main{}
 double func(double input1, double input2){ ... return result}
 int, float, double
+const double var
 double *var_pointer
+double arrray[N]
 var_pointer = &var
+file *fp
+fp = fopen('foo.bar','w')
+fprintf(fp,'variable 1 = %f and variable 2 = %f', var1, var2)
+fclose(fp)
 printf("the value of var is %d", *var_pointer)
 * is to point to the value at the address location and
 & is to know the address location of the variable
 for (i=0;i<N;i++){}
+while(i < 100){}
 scanf("%d",&a)
 printf("var = %d",var)
 puts("to print a string")
@@ -26,8 +33,6 @@ fscanf(fp,'%s',buffer)
 fclose(fp)
 #fgetc, fputc, fgets, fputs
 
-need to add how to load data, from raw input during execution, from the command line and from files
-also how to print output to files
-pointers, array pointers and file pointers
+need to add how to load data, from the command line and from files
 dynamic memory allocation
 linking random libraries, like math.h, while compilation
