@@ -3,12 +3,48 @@ variable definitions
 loading variables and saving variables
 loops and function calls
 
-Program function_name
-	Implicit None
-	Real(8) :: var1, var2, var3
-	Real(8) :: var4 = 5
+http://en.wikibooks.org/wiki/Fortran/Fortran_Simple_math
+https://www.nsc.liu.se/~boein/f77to90/a5.html
+http://www.cs.mtu.edu/~shene/COURSES/cs201/NOTES/chap02/funct.html
+http://math.hawaii.edu/wordpress/fortran-1/
 
-Print *, 'print to user'
-Print *, 'var1 =', var1
-Read *, var1
-End Program function_name
+math functions such as
+SQRT() to compute the square root of a number
+x**y to compute the yth power of x
+
+http://www.adt.unipd.it/corsi/Bianco/www.pcc.qub.ac.uk/tec/courses/f90/stu-notes/F90_notesMIF_7.html
+
+C	for reasons that are beyond me, all of the code starts with a tab
+c 	a sentence that starts with a c is commented
+c	each code starts and ends with PROGRAM foobar and END PROGRAM foobar
+
+	PROGRAM foobar
+	IMPLICIT NONE
+	INTEGER :: a
+	INTEGER, PARAMETER :: b = 5
+	DOUBLE PRECISION :: c
+	print *, 'please enter the value of a'
+	read *, a
+	END PROGRAM
+
+	IF () THEN
+	ELSE IF () THEN
+	ENDIF
+
+.GT. .LT. .GE. .LE. .EQ. .NE. are to be used in the control statements for comparison
+one can also use .AND. .NOT. .OR. to use multiple comparisons for control
+
+http://en.wikibooks.org/wiki/Fortran/Fortran_control
+
+	DO a,b,c
+	END DO
+
+10	IF () THEN
+	ENDIF
+	GOTO 10
+
+C	will make the program return to the IF () THEN statement after
+C	executing whatever is in the if loop. this is a replacement for
+C	a while loop
+
+http://www.infis.univ.trieste.it/fortran/control1.html
