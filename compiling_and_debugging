@@ -7,6 +7,11 @@ gcc -c file2.o file2.c
 gcc -o final.o file1.o file2.o
 https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/Warning-Options.html#Warning-Options
 
+syntax is pretty much the same for fortran too, say for f95 compiler
+f95 file.f
+f95 -o file.exe file.f
+https://gcc.gnu.org/wiki/GFortranGettingStarted
+
 r for run
 n for next 
 print var
