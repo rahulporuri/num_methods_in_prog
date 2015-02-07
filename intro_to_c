@@ -36,3 +36,34 @@ fclose(fp)
 need to add how to load data, from the command line and from files
 dynamic memory allocation
 linking random libraries, like math.h, while compilation
+
+===========
+
+// or /* ... */ can be used for commenting lines in C code
+the code needs to start with relevant libraries being linked because
+this is how the compiler will understand pre-defined bits of the code
+#include <stdio.h>
+#include <math.h>
+// if you are using the math.h library, dont forget to link it while compiling
+// using $ gcc file.c -lm
+int
+main(void)
+{... }
+// is the C standard way of coding, is all.
+
+//we need to know how to print output to the monitor/terminal/screen
+printf("%f, %f \n",var1, var2);
+//if you want to print/save output to a file
+FILE *output_ptr;
+output_ptr = fopen("results.dat","w");
+fprintf(output_ptr,"%f, %f \n",var1, var2);
+
+//say, we want to get some variables from the user as input during runtime
+scanf("%d",&var);
+// say we would rather get the input as part of the command line
+int
+main(int *argc, char *argv[*])
+{}
+// say we would rather get them from a file specified in the command line
+FILE *input_ptr
+// say we would rather get them from a generic file whose name is static
