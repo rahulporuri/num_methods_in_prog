@@ -1,0 +1,59 @@
+SHELL=/bin/sh
+
+# This file contains a set of rules used by the "make"
+#   command.  This makefile $(MAKEFILE) tells "make" how the
+#   executable area $(COMMAND) should be created
+#   from the source files $(SRCS) via the object
+#   files $(OBJS) and the header files $(HDRS); type the command:
+#        "make -f make_area"
+#   where make_area should be replaced by the name of
+#   the makefile.
+# 
+# This file also tells make what to do if arguments
+#   follow the "make" command.
+#
+# To remove the OBJS files; type the command:
+#        "make -f make_area clean"
+#
+# To create a gzipped tar file with name $(COMMAND).tar.gz
+#  containing this makefile and the SRCS files,
+#  type the command:
+#        "make -f make_area tarz"
+ 
+SRCS= \
+area.c\
+area_calc.c 
+  
+OBJS= \
+area.o\
+area_calc.o
+
+HDRS= 
+
+MAKEFILE= make_area
+
+COMMAND=  area
+ 
+CC= gcc
+CFLAGS=  -g
+WARNFLAGS= -ansi -pedantic -Werror -Wall \
+   -Wmissing-prototypes -Wstrict-prototypes \
+   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
+   -Wwrite-strings -fno-common -Wnested-externs
+LDFLAGS= -lm
+ 
+$(COMMAND): $(OBJS) 
+	$(CC) -o $(COMMAND) $(OBJS) $(LDFLAGS) $(LIBS)
+                 
+area.o : area.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c area.c -o area.o
+ 
+area_calc.o : area_calc.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c area_calc.c -o area_calc.o
+
+clean:
+	rm -f $(OBJS)
+ 
+tarz:
+	tar zcf - $(MAKEFILE) $(SRCS) $(HDRS) > $(COMMAND).tar.gz
+ 

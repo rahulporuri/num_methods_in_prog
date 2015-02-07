@@ -1,0 +1,60 @@
+SHELL=/bin/sh
+
+# This file contains a set of rules used by the "make"
+#   command.  This makefile $(MAKEFILE) tells "make" how the
+#   executable deriv_test $(COMMAND) should be created
+#   from the source files $(SRCS) via the object
+#   files $(OBJS) and the header files $(HDRS); type the command:
+#        "make -f make_deriv_test"
+#   where make_deriv_test should be replaced by the name of
+#   the makefile.
+# 
+# This file also tells make what to do if arguments
+#   follow the "make" command.
+#
+# To remove the OBJS files; type the command:
+#        "make -f make_deriv_test clean"
+#
+# To create a gzipped tar file with name $(COMMAND).tar.gz
+#  containing this makefile and the SRCS files,
+#  type the command:
+#        "make -f make_deriv_test tarz"
+ 
+SRCS= \
+dderiv_test.c\
+dderiv.c
+  
+OBJS= \
+dderiv_test.o\
+dderiv.o 
+
+HDRS= 
+
+MAKEFILE= make_dderiv_test
+
+COMMAND=  dderiv_test
+ 
+CC= gcc
+CFLAGS=  -g
+WARNFLAGS= -ansi -pedantic -Werror -Wall \
+   -Wmissing-prototypes -Wstrict-prototypes \
+   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
+   -Wwrite-strings -fno-common -Wnested-externs
+LDFLAGS= -lm
+ 
+$(COMMAND): $(OBJS) 
+	$(CC) -o $(COMMAND) $(OBJS) $(LDFLAGS) $(LIBS)
+                 
+dderiv_test.o : dderiv_test.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c dderiv_test.c -o dderiv_test.o
+	
+dderiv.o : dderiv.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c dderiv.c -o dderiv.o
+ 
+ 
+clean:
+	rm -f $(OBJS)
+ 
+tarz:
+	tar zcf - $(MAKEFILE) $(SRCS) $(HDRS) > $(COMMAND).tar.gz
+ 
