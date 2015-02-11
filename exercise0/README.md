@@ -13,3 +13,12 @@ the third was to convert an integer in base 10 to it's binary equivalent.
 
 the files area.*, precision.* and base_conversion.* are my solutions to the aforementioned problems.
 area.f is still underconstruction and is still in the works.
+
+-----
+
+the big take away from this exercise is how to estimate machine precision, how to convert a number to it's binary equivalent and
+how to take user inout in c, fortran and python
+how to read from and write to files in said languages
+
+----
+

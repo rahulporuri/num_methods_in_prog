@@ -48,3 +48,11 @@ C	executing whatever is in the if loop. this is a replacement for
 C	a while loop
 
 http://www.infis.univ.trieste.it/fortran/control1.html
+
+http://www.oc.nps.edu/~bird/oc3030_online/fortran/io/io.html
+http://stackoverflow.com/questions/12002620/write-data-to-file-in-columns-fortran
+http://www.math.hawaii.edu/~hile/fortran/fort7.htm
+! can be used to comment lines
+! what about starting a sentence with 'c'?!
+https://www.nsc.liu.se/~boein/f77to90/a5.html - intrinsic functions
+http://www.chem.ox.ac.uk/fortran/subprograms.html
