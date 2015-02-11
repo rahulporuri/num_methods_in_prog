@@ -1,0 +1,69 @@
+http://apps.nrbook.com/empanel/index.html#
+#include <stdio.h>
+#include <math.h>
+#include "file.h"
+int main(void){ ... return 0;}
+void main{}
+double func(double input1, double input2){ ... return result}
+int, float, double
+const double var
+double *var_pointer
+double arrray[N]
+var_pointer = &var
+file *fp
+fp = fopen('foo.bar','w')
+fprintf(fp,'variable 1 = %f and variable 2 = %f', var1, var2)
+fclose(fp)
+printf("the value of var is %d", *var_pointer)
+* is to point to the value at the address location and
+& is to know the address location of the variable
+for (i=0;i<N;i++){}
+while(i < 100){}
+scanf("%d",&a)
+printf("var = %d",var)
+puts("to print a string")
+%f, %lf, %c, %s
+
+FILE *fp
+#FILE *fopen(const char *filename, const char *mode)
+fp = fopen("file_name","r/w/a")
+char buffer[20]
+fscanf(fp,'%s',buffer)
+#int fclose(FILE *a_file)
+fclose(fp)
+#fgetc, fputc, fgets, fputs
+
+need to add how to load data, from the command line and from files
+dynamic memory allocation
+linking random libraries, like math.h, while compilation
+
+===========
+
+// or /* ... */ can be used for commenting lines in C code
+the code needs to start with relevant libraries being linked because
+this is how the compiler will understand pre-defined bits of the code
+#include <stdio.h>
+#include <math.h>
+// if you are using the math.h library, dont forget to link it while compiling
+// using $ gcc file.c -lm
+int
+main(void)
+{... }
+// is the C standard way of coding, is all.
+
+//we need to know how to print output to the monitor/terminal/screen
+printf("%f, %f \n",var1, var2);
+//if you want to print/save output to a file
+FILE *output_ptr;
+output_ptr = fopen("results.dat","w");
+fprintf(output_ptr,"%f, %f \n",var1, var2);
+
+//say, we want to get some variables from the user as input during runtime
+scanf("%d",&var);
+// say we would rather get the input as part of the command line
+int
+main(int *argc, char *argv[*])
+{}
+// say we would rather get them from a file specified in the command line
+FILE *input_ptr
+// say we would rather get them from a generic file whose name is static
