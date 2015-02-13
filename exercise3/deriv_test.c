@@ -62,6 +62,7 @@ main(int argc, char *argv[])
 	
 	/*initialization*/	
 	x0 = M_PI;
+/*	x0 = 0.;*/
 	
 	h_min = 1e-17;
 	
@@ -99,7 +100,7 @@ main(int argc, char *argv[])
 	/*initial value of h*/	
 	h = h_max;
 
-	exact = my_func(x0,params_ptr);
+	exact = -1 + beta;
 	
 	/*looping though h values*/
 	while(h > h_min)
