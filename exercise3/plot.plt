@@ -1,3 +1,17 @@
+/*FILE: plot.plt
+
+Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
+
+Version: Original
+
+Date: 14 Feb 2015
+
+Revision-History:
+	14 Feb 2015
+
+Comments:
+*/
+
 f(x) = a*x + b
 g(x) = c*x + d
 h(x) = e*x + f

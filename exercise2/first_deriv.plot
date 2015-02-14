@@ -1,3 +1,14 @@
+#FILE: first_deriv.plot
+#
+#Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
+#
+#Version: Adapted from an original from Sunethra Ramaman's codes
+#
+#Date: 14 Feb 2015
+#
+#Revision-History:
+#	14 Feb 2015
+
 # http://people.duke.edu/~hpgavin/gnuplot.html
 set term postscript color  enhanced
 set output 'plot_of_log_e_vs_log_h_first_deriv.ps'

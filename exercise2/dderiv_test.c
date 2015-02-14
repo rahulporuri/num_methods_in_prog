@@ -1,18 +1,14 @@
-/*FILE: deriv_test.c
+/*FILE: dderiv_test.c
 
 Programer: Sunethra Ramanan suna@physics.iitm.ac.in
 
 Date:4 Jan 2013
-
 Version: Original
-
 Revision-History:
-	4 Jan 2013
+	14 Feb 2015
 
 Comments:
-26 Jan 2012: This calls deriv.c and calculates derivatives of function at a point x0.
-
-4 Jan 2013: The second derivative has been taken out for class demonstration purposes.
+14 Feb 2015: This calls deriv.c and calculates second derivative of function at a point x0.
 */
 
 #include <stdio.h>
@@ -33,12 +29,12 @@ main(int argc, char *argv[])
 	FILE *err1_ptr;						/*stores the error in first derivative*/
 /*	FILE *der_ptr;	*/					/*stores the calculates and the exact values of the derivative*/
 	
-	double x0;								/*point where the derivative is obtained*/
-	double df;							/*variable that stores the forward derivative of exp(x)*/
-	double h;								/*step size*/
-	double h_min, h_max;			/*max and min of step size*/
-	double exact;							/*exact value of the derivative*/
-	double err;								/*this is the relative error in forward method*/
+	double x0;						/*point where the derivative is obtained*/
+	double df;						/*variable that stores the forward derivative of exp(x)*/
+	double h;						/*step size*/
+	double h_min, h_max;					/*max and min of step size*/
+	double exact;						/*exact value of the derivative*/
+	double err;						/*this is the relative error in forward method*/
 
 	
 	void *params_ptr;

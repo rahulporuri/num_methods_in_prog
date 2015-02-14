@@ -1,13 +1,13 @@
 /*FILE: deriv_test.c
 
-Programer: Sunethra Ramanan suna@physics.iitm.ac.in
+Programer: Poruri Sai Rahul email ID: rahul.poruri@gmail.com
 
-Date:4 Jan 2013
+Date: 14 Feb 2015
 
 Version: Original
 
 Revision-History:
-	4 Jan 2013
+	14 Feb 2015
 
 Comments:
 26 Jan 2012: This calls deriv.c and calculates derivatives of function at a point x0.
@@ -35,14 +35,14 @@ main(int argc, char *argv[])
 	
 	int opt;						/*this chooses between forward or central difference: opt == 1 => forward difference and opt == 2 => central difference*/
 	
-	double x0;								/*point where the derivative is obtained*/
-	double df_forward;							/*variable that stores the forward derivative of exp(x)*/
-	double df_central;							/*variable that stores the central derivative of exp(x)*/
-	double h;								/*step size*/
-	double h_min, h_max;			/*max and min of step size*/
-	double exact;							/*exact value of the derivative*/
-	double err_forward;								/*this is the relative error in forward method*/
-	double err_central;								/*this is the relative error in central method*/
+	double x0;						/*point where the derivative is obtained*/
+	double df_forward;					/*variable that stores the forward derivative of exp(x)*/
+	double df_central;					/*variable that stores the central derivative of exp(x)*/
+	double h;						/*step size*/
+	double h_min, h_max;					/*max and min of step size*/
+	double exact;						/*exact value of the derivative*/
+	double err_forward;					/*this is the relative error in forward method*/
+	double err_central;					/*this is the relative error in central method*/
 	
 	void *params_ptr;
 

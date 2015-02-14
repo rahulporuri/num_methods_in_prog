@@ -1,15 +1,15 @@
-/*FILE: trapezoidal_rule.c
+/*FILE: simpsons_rule.c
 
-Programer: Sunethra Ramanan  suna@physics.iitm.ac.in
+Programer: Poruri Sai Rahul email ID: rahul.poruri@gmail.com
 
-Date: 23 Jan 2012
+Date: 14 Feb 2015
 
 Version: Original
 
 Revision-History:
 
 Comments:
-23 Jan 2012: This calculates integrals using the trapezoidal rule and can be called from other codes.
+23 Jan 2012: This calculates integrals using the simpsons rule and can be called from other codes.
 */
 
 #include <stdio.h>
@@ -23,7 +23,7 @@ simpsons_rule(int npts, double a, double b, double (* func) (double, void *), vo
 struct func_struct
 {
 	double alpha0;    /*some parameter that the function depends on*/
-  double beta0;     /*some other parameter that the function depends on*/
+	double beta0;     /*some other parameter that the function depends on*/
 };
 
 /************************************************************************/

@@ -1,18 +1,16 @@
 /*FILE: integ_test.c
 
-Programer: Sunethra Ramanan suna@physics.iitm.ac.in
+Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
 
-Version: Original
+Version: Adapted from an original from Sunethra Ramaman's codes
 
-Date: 23 Jan 2012
+Date: 14 Feb 2015
 
 Revision-History:
-	10 Feb 2012
+	14 Feb 2015
 
 Comments:
-23 Jan 2012: This is the main code that calls various subroutines to integrate simple functions.
-
-10 Feb 2012: Using structures and pointers for the parameters of the function.
+14 Feb 2015: Using structures and pointers for the parameters of the function.
 */
 
 #include <stdio.h>
@@ -20,17 +18,16 @@ Comments:
 #include <stdlib.h>
 #include "integ_test.h"
 
-
 int
 main(void)
 {
 	FILE *int_ptr;					/*file pointer to file that stores the rel error as a function of N_max*/
 	
-	int i;									/*counter*/
-	int N_max;							/*no. of integration points*/
+	int i;						/*counter*/
+	int N_max;					/*no. of integration points*/
 	
-	double exact;						/*exact result*/
-	double alpha, beta;			/*parameters that the function depends on*/
+	double exact;					/*exact result*/
+	double alpha, beta;				/*parameters that the function depends on*/
 	
 	double ans_trap;				/*calculated result using trapezoidal rule*/
 	double err_trap;				/*rel err in trapezoidal rule*/
@@ -41,9 +38,9 @@ main(void)
 	double ans_38ths;				/*calculated result using simpsons rule*/	
 	double err_38ths;				/*rel err in simpsons rule*/
 	
-	double a,b;							/*lower and upper limits of integration*/
+	double a,b;					/*lower and upper limits of integration*/
 	
-	struct func_struct my_var;	/*variable of type struct func_struct*/
+	struct func_struct my_var;			/*variable of type struct func_struct*/
 	void *params_ptr;				/*pointer that will eventually point to the structure*/
 	
 	/*initializations*/

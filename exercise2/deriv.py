@@ -1,3 +1,19 @@
+'''
+FILE: deriv.py
+
+Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
+
+Version: Original
+
+Date: 14 Feb 2015
+
+Revision-History:
+	14 Feb 2015
+
+Comments:
+14 Feb 2015: estimates the first derivative of the function exp(x)
+'''
+
 import math
 
 temp = raw_input("please enter the x value where the function's derivative will be evaluated \n")

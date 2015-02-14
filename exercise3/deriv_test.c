@@ -1,21 +1,16 @@
 /*FILE: deriv_test.c
 
-Programer: Sunethra Ramanan suna@physics.iitm.ac.in
+Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
 
-Date:4 Jan 2013
+Date: 14 Feb 2015
 
-Version: Original
+Version: Adapted from Sunethra Ramaman's codes
 
 Revision-History:
-	4 Jan 2013
-	9 Feb 2015
+	14 Feb 2015
 
 Comments:
-26 Jan 2012: This calls deriv.c and calculates derivatives of function at a point x0.
-
-4 Jan 2013: The second derivative has been taken out for class demonstration purposes.
-
-9 Feb 2015: The code has been modified to take an input file and an output file. 
+14 Feb 2015: The code needs an input data file and 2 output data files - one for errors and one to store the actual derivative value
 */
 
 #include <stdio.h>
@@ -32,33 +27,33 @@ my_func(double x, void *params_ptr);
 
 struct func_struct
 {
-	double alpha0;    /*some parameter that the function depends on*/
-  	double beta0;     /*some other parameter that the function depends on*/
+	double alpha0;    			/*some parameter that the function depends on*/
+  	double beta0;     			/*some other parameter that the function depends on*/
 };
 /*****************************************************************************/
 
 int
 main(int argc, char *argv[])
 {
-	FILE *in_ptr;							/*carries input parameters*/
-	FILE *err1_ptr;						/*stores the error in first derivative*/
-	FILE *der_ptr;						/*stores the calculates and the exact values of the derivative*/
+	FILE *in_ptr;				/*carries input parameters*/
+	FILE *err1_ptr;				/*stores the error in first derivative*/
+	FILE *der_ptr;				/*stores the calculates and the exact values of the derivative*/
 	
-	int opt;									/*this chooses between forward or central difference: opt == 1 => forward difference and opt == 2 => central difference*/
+	int opt;				/*this chooses between forward or central difference: opt == 1 => forward difference and opt == 2 => central difference*/
 	
-	double x0;								/*point where the derivative is obtained*/
-	double df;								/*variable that stores the derivative of exp(x)*/
-	double h;									/*step size*/
+	double x0;				/*point where the derivative is obtained*/
+	double df;				/*variable that stores the derivative of exp(x)*/
+	double h;				/*step size*/
 	double h_min, h_max;			/*max and min of step size*/
-	double exact;							/*exact value of the derivative*/
-	double err;								/*this is the relative error*/
-	double alpha;							/*value of the function parameter*/
-	double beta;							/*value of the function parameter*/
+	double exact;				/*exact value of the derivative*/
+	double err;				/*this is the relative error*/
+	double alpha;				/*value of the function parameter*/
+	double beta;				/*value of the function parameter*/
 	
 	char line[256];
 
-	struct func_struct my_var;	/*variable of type struct func_struct*/	
-	void *params_ptr;					/*pointer to variable*/
+	struct func_struct my_var;		/*variable of type struct func_struct*/	
+	void *params_ptr;			/*pointer to variable*/
 	
 	/*initialization*/	
 	x0 = M_PI;

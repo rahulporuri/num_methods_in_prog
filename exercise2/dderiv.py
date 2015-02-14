@@ -1,3 +1,18 @@
+'''
+FILE: dderiv.py
+
+Programer: Poruri Sai Rahul email ID : rahul.poruri@gmail.com
+
+Version: Original
+
+Date: 14 Feb 2015
+Revision-History:
+	14 Feb 2015
+
+Comments:
+14 Feb 2015: Estimates the second derivative of a function exp(x).
+'''
+
 import math
 import numpy as np
 import matplotlib.pyplot as plt
