@@ -1,0 +1,46 @@
+
+
+*******************************************************************************
+Mon Feb 16 16:22:29 2015
+
+
+FIT:    data read from 'fort.10' u (log($1)):(log($2))
+        format = x:z
+        #datapoints = 17
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 2558.06           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 6.08762
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 0.66263
+rel. change during last iteration : -9.53908e-08
+
+degrees of freedom    (FIT_NDF)                        : 15
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.210179
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0441753
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = -0.52061         +/- 0.01501      (2.884%)
+b               = 1.80805          +/- 0.1284       (7.1%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.918  1.000 
