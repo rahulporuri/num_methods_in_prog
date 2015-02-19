@@ -1,0 +1,46 @@
+
+
+*******************************************************************************
+Thu Feb 19 15:04:14 2015
+
+
+FIT:    data read from 'error_pi_est.dat' u (log10($1)):(log10($2))
+        format = x:z
+        #datapoints = 14
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 365.05            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 2.36797
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 0.0775806
+rel. change during last iteration : -6.93633e-12
+
+degrees of freedom    (FIT_NDF)                        : 12
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0804055
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00646505
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = -0.494626        +/- 0.01771      (3.58%)
+b               = 0.646327         +/- 0.0566       (8.757%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.925  1.000 
