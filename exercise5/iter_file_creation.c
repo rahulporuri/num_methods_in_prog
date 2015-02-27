@@ -8,7 +8,7 @@ int main()
 
 	for (l=0;l<6;l++)
 	{
-		in_ptr = fopen("file_"+l,"w");
+		in_ptr = fopen("file_%d"+l,"w");
 		fprintf(in_ptr,"Hello, World_%d\n",l);
 		fclose(in_ptr);
 	}
