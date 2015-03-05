@@ -1,0 +1,138 @@
+
+
+*******************************************************************************
+Thu Mar  5 15:21:39 2015
+
+
+FIT:    data read from 'integ_test_fn_vs_N_max.dat' u (log10($1)):(log10($2))
+        format = x:z
+        #datapoints = 410
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 154986            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.99951
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 28.4158
+rel. change during last iteration : -8.8856e-13
+
+degrees of freedom    (FIT_NDF)                        : 408
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.263906
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0696466
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = 0.18463          +/- 0.03541      (19.18%)
+b               = -16.3028         +/- 0.09367      (0.5745%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.990  1.000 
+
+
+*******************************************************************************
+Thu Mar  5 15:32:53 2015
+
+
+FIT:    data read from 'integ_test_fn_vs_N_max.dat' u (log10($1)):(log10($2))
+        format = x:z
+        #datapoints = 499
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 32700.2           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.9729
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 0.065976
+rel. change during last iteration : -1.65542e-13
+
+degrees of freedom    (FIT_NDF)                        : 497
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0115217
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.000132748
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = -1.35464         +/- 0.001237     (0.09132%)
+b               = -0.981267        +/- 0.003222     (0.3284%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.987  1.000 
+
+
+*******************************************************************************
+Thu Mar  5 15:35:29 2015
+
+
+FIT:    data read from 'integ_test_fn_vs_N_max.dat' u (log10($1)):(log10($2))
+        format = x:z
+        #datapoints = 499
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 0.065976          delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.9729
+
+initial set of free parameter values
+
+a               = -1.35464
+b               = -0.981267
+
+After 1 iterations the fit converged.
+final sum of squares of residuals : 0.065976
+rel. change during last iteration : -2.52415e-15
+
+degrees of freedom    (FIT_NDF)                        : 497
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0115217
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.000132748
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = -1.35464         +/- 0.001237     (0.09132%)
+b               = -0.981267        +/- 0.003222     (0.3284%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.987  1.000 
