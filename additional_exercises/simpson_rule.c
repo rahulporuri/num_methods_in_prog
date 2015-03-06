@@ -58,13 +58,17 @@ simpson_rule(int npts, double a, double b, double z, double (* func) (double, do
 			if (y != y){sum += 0;}
 			else {sum += 2.*y;}
 		}
+//		printf("sum = %lf at x = %lf\n", sum, x);
 	}
 	
 	/*evaluating the function at the end points*/
 	fa = (*func)(a,z);
 	fb = (*func)(b,z);
 	
-	sum = (sum + fa + fb) * (h/3.);
+	if (fb != fb){sum = (sum + fa + 0) * (h/3.);}
+	else{sum = (sum + fa + fb) * (h/3.);}
+
+//	printf("sum = %lf at z = %lf \n", sum, z);
 	
 	return(sum);
 }
