@@ -4,7 +4,7 @@ Author : Poruri Sai Rahul rahul.poruri@gmail.com
 
 Comments :
         We find a numerical solution to the first order differential equation dy/dx = func(y,x), where func(y,x) is defined below.
-        An adaptive Runge-Kutta Fehlberg method using the D.J. & Hall, G. 4,5 coefficients is used as the stepper routine, defined as rk_adap_step.
+        An adaptive Runge-Kutta Fehlberg method using the Higham, D.J. & Hall, G. 4,5 coefficients is used as the stepper routine, defined as rk_adap_step.
         Step size is changed depending on the ratio of the tolerance to the absolute error between the fifth and the fourth order estimates.
 */
 
