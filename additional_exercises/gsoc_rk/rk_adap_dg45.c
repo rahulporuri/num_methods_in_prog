@@ -18,7 +18,7 @@ void rk_adap_step(double, double *, double);
 int
 main(void)
 {
-	double h = 0.1;						/*initial estimate of step-size*/
+	double h = 0.25;						/*initial estimate of step-size*/
 	double x = 0.;
 	double err;						/*error between the fourth and fifth order estimates*/
 	double tol = 0.1;					/*set the tolerance that you would like the adaptive routine to achieve/maintain*/
@@ -29,7 +29,8 @@ main(void)
 	array = (double*)malloc(2*sizeof(double));
         /*we are going to save the fourth and fifth order estimates as array elements, which will be passed to the stepper*/
 
-	int i;							/*dummy variable for the counter*/
+	int fn_calls;
+	fn_calls =0;
 
 	FILE *in_ptr;
 	in_ptr = fopen("rk_adap_dg45.dat","w");
@@ -37,10 +38,11 @@ main(void)
 	array[0] = 0.5;
 	array[1] = 0.5;
 
-	for (i=0;i<200;i++)
+	while (x<10.)
 	{
 		pre_step_y = array[0];				/*load the pre_step_y before calling the stepper function*/
 		rk_adap_step(x, array,h);
+		fn_calls += 7;
 		err = fabs(array[0]-array[1]);
 //		printf("%lf, %lf \n", x, err);
 		if (err > tol)
@@ -59,13 +61,14 @@ main(void)
 		}
 	}
 
+	fprintf(in_ptr, "## the total number of function calls made were %d \n", fn_calls);
 	fclose(in_ptr);
 	return (0);
 }
 
 double func(double x, double y)
 {
-	return (10*exp(-pow(x-2,2)/(2*pow(0.075,2))) - 0.6*y);
+	return (10*exp(-(x-2)*(x-2)/(2*(0.075*0.075))) - 0.6*y);
 }
 
 void rk_adap_step(double x , double *array, double h)
