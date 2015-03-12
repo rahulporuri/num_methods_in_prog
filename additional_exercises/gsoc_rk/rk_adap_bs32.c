@@ -33,7 +33,7 @@ main(void)
 	/*we are going to save the third and second order estimates as array elements, which will be passed to the stepper*/
 
 	FILE *in_ptr;
-	in_ptr = fopen("rk_adap_bs32_test.dat","w");
+	in_ptr = fopen("rk_adap_bs32.dat","w");
 
 	array[0] = 0.5;
 	array[1] = 0.5;
