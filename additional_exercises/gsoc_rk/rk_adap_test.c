@@ -73,22 +73,31 @@ double func(double x, double y)
 
 void rk_adap_step(double x , double *array, double h)
 {
+	const double c2= 1./5, a21= 1./5;
+	const double c3= 3./10, a31= 3./10, a32= 9./40;
+	const double c4= 3./5, a41= 3./10, a42= -9./10, a43=6./5;
+	const double c5= 1., a51= -11./54, a52= 5./2, a53= -70/27, a54= 35/27;
+	const double c6= 7./8, a61= 1631./ 55296, a62= 175./512, a63= 575./13824, a64= 44275./110592, a65= 253./4096;
+
+	const double b1= 37./378, b3= 250./621, b4= 125./594, b6=512./1771;
+	const double B1= 2825./27648, B3= 12575./48384, B4= 13525./55296, B5= 277./14336, B6= 1./4;
+
 	double k1, k2, k3, k4, k5, k6;
 	double y;
 
 	y = array[0];
 
 	k1 = (*func)(x,y);
-	k2 = (*func)(x +h/5., y+k1*h/5.);
-	k3 = (*func)(x +3*h/10., y +(3*k1/40. +9*k2/40.)*h);
-	k4 = (*func)(x +3*h/5., y +(3*k1/10 -9*k2/10. + 6*k3/5)*h);
-	k5 = (*func)(x +h, y +(-11*k1/54 +5*k2/2. -70*k3/27 +35*k4/27)*h);
-	k6 = (*func)(x +7*h/8., y +(1631*k1/55296 +175*k2/512 + 575*k3/13824 +44275*k4/110592 +253*k5/4096)*h);
+	k2 = (*func)(x +c2*h, y +a21*k1*h);
+	k3 = (*func)(x +c3*h, y +(a31*k1 +a32*k2)*h);
+	k4 = (*func)(x +c4*h, y +(a41*k1 +a42*k2 +a43*k3)*h);
+	k5 = (*func)(x +c5*h, y +(a51*k1 +a52*k2 +a53*k3 +a54*k4)*h);
+	k6 = (*func)(x +c6*h, y +(a61*k1 +a62*k2 +a63*k3 +a64*k4 +a65*k5)*h);
 	/*Cash-Karp RK*/
 
-	array[0] = array[0] + (37*k1/378. +250*k3/621. +125*k4/594. +512*k6/1771.)*h;
+	array[0] = array[0] + (b1*k1 +b3*k3 +b4*k4 +b6*k6)*h;
 	/*array[0] is the fourth order estimate*/
-	array[1] = array[0] + (2825*k1/27648. +12575*k3/48384. +13525*k4/55296. +277*k5/14336. +k6/4.)*h;
+	array[1] = array[0] + (B1*k1 +B3*k3 +B4*k4 +B5*k5 +B6*k6)*h;
 	/*array[1] is the fifth order estimate*/
 
 	return;

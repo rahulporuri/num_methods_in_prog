@@ -33,7 +33,7 @@ main(void)
 	/*we are going to save the third and second order estimates as array elements, which will be passed to the stepper*/
 
 	FILE *in_ptr;
-	in_ptr = fopen("rk_adap_bs32.dat","w");
+	in_ptr = fopen("rk_adap_bs32_test.dat","w");
 
 	array[0] = 0.5;
 	array[1] = 0.5;
@@ -73,20 +73,26 @@ double func(double x, double y)
 
 void rk_adap_step(double x , double *array, double h)
 {
+	const double c2= 1./2, a21= 1./2;
+	const double c3= 3./4, a32= 3./4;
+	const double c4= 1., a41= 1./9, a42= 1./3, a43= 4./9;
+	const double b1= 2./9, b2= 1./3, b3= 4./9;
+	const double B1= 7./24, B2= 1./4, B3= 1./3, B4= 1./8;
+
 	double k1, k2, k3, k4;
 	double y;
 
 	y = array[0];
 
 	k1 = (*func)(x,y);
-	k2 = (*func)(x +h/2., y+k1*h/2.);
-	k3 = (*func)(x +3*h/4., y +3*k2*h/4.);
-	k4 = (*func)(x +h, y +(2*k1/9. +k2/3. +4*k3/9.)*h);
+	k2 = (*func)(x +c2*h, y +a21*k1*h);
+	k3 = (*func)(x +c3*h, y +a32*k2*h);
+	k4 = (*func)(x +c4*h, y +(a41*k1 +a42*k2 +a43*k3)*h);
 	/*Bogacki-Shampine 3(2) adaptive RK*/
 	
-	array[0] = array[0] + (2*k1/9. +k2/3. +4*k3/9.)*h;
+	array[0] = array[0] + (b1*k1 +b2*k2 +b3*k3)*h;
 	/*array[0] is the third order estimate*/
-	array[1] = array[0] + (7*k1/24. +k2/4. +k3/3. +k4/8.)*h;
+	array[1] = array[0] + (B1*k1 +B2*k2 +B3*k3 +B4*k4)*h;
 	/*array[1] is the second order estimate*/
 	return;
 }
