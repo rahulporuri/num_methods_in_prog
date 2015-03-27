@@ -1,10 +1,15 @@
+#plot 'file_1.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_1.000000.dat' u (log($4)):(log($2)) title 'recursion method'
+#plot 'file_1.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_1.000000.dat' u (log($4)):(log($2)) title 'recursion method'
+#plot 'file_1.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_1.000000.dat' u (log($4)):(log($2)) title 'recursion method'
+#plot 'file_1.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_1.000000.dat' u (log($4)):(log($2)) title 'recursion method'
 
-plot 'test_10.dat' u 1:2 title 'analytical result', 'test_10.dat' u 1:3 title 'N=10', 'test_100.dat' u 1:3 title 'N=100', 'test_1000.dat' u 1:3 title 'N=1000'
+plot 'file_0.100000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_0.100000.dat' u (log($4)):(log($2)) title 'recursion method', 'file_1.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_1.000000.dat' u (log($4)):(log($2)) title 'recursion method', 'file_10.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_10.000000.dat' u (log($4)):(log($2)) title 'recursion method', plot 'file_100.000000.dat' u (log($4)):(log($1)) title 'series summation method', 'file_100.000000.dat' u (log($4)):(log($2)) title 'recursion method'
+
 set key top left
-set title 'comparison of analytic results to that obtained using simultaneous linear equations'
-set xlabel 'x'
-set ylabel 'y'
+set title 'error in estimation of exponential of -x using various methods'
+set xlabel 'log(N)'
+set ylabel 'log(e)'
 
 set term postscript color enhanced
-set output 'lu_decomp.ps'
+set output 'eval_exp.ps'
 replot

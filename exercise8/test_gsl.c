@@ -14,14 +14,18 @@ main(void)
 {
 	clock_t start, stop; 
 	
-	FILE *out_ptr;
-	out_ptr = fopen("test_gsl_4000.dat","w");
+//	FILE *out_ptr;
+//	out_ptr = fopen("test_gsl_100000.dat","w");
 		
-	int N=4000;
-	gsl_matrix *gsl_mat;
+	int N=500000;
 
-	double B_data[N];
-	double U_data[N];
+	gsl_vector *diag;
+	gsl_vector *e;
+	gsl_vector *u;
+	gsl_vector *b;
+
+//	double B_data[N];
+//	double U_data[N];
 
 	int i, j;
 	int a = 0;
@@ -31,88 +35,64 @@ main(void)
 	double h;
 	h=(bb-a)/(N+1.);
 	xx = 0;
-		
-	/*set matrix A*/
-		/*using gsl matrices*/
-	gsl_mat = gsl_matrix_alloc(N, N);
+
+	/*set matrices diag, e- off diag, b and u*/
+	/*using gsl vectors*/
+	diag = gsl_vector_alloc(N);
+	e = gsl_vector_alloc(N-1);
+	u = gsl_vector_alloc(N);
+	b = gsl_vector_alloc(N);
 	
 	for(i = 0; i < N; i ++)
 	{
-		for(j = 0; j < N; j ++)
-		{
-			if(i == j)
-			{
-				gsl_matrix_set(gsl_mat, i, j, 2.);
-			}
-			else if(i-j==-1)
-			{
-				gsl_matrix_set(gsl_mat, i, j, -1.);
-			}
-			else if(i-j==1)
-			{
-				gsl_matrix_set(gsl_mat, i, j, -1.);
-			}
-			else
-			{
-				gsl_matrix_set(gsl_mat, i, j, 0.);
-			}
-			
-//			printf("i:%d j:%d M_ij:%f \n", i, j, gsl_matrix_get(gsl_mat, i, j));
-		}
-	}
-	
-	/*set matrix B*/
-
-	for (i=0;i<N;i++)
-	{
 		xx = a+i*h;
-		B_data[i] = h*h*fn(xx);
-		U_data[i] = un(xx);
-	}
-/*
-	for (i=0; i<N; i++)
-	{
-		for (j=0; j<N; j++)
-		{
-			printf("%lf",gsl_matrix_get(gsl_mat, i, j));
-		}
-		printf(" %lf, %lf \n", B_data[i], U_data[i]);
+		gsl_vector_set(b, i, h*h*fn(xx));
+		gsl_vector_set(u, i, un(xx));
+
+		gsl_vector_set(diag, i, 2.);
 	}
 
-	printf("%lf \n", h);
-	*/
-	start = clock();
+	for(i = 0; i < N-1; i ++)
+	{
+		gsl_vector_set(e, i, -1.);
+	}
+
+/*	for (i=0; i<N; i++)
+	{
+		printf("%lf %lf %lf \n", gsl_vector_get(diag, i), gsl_vector_get(e, i), gsl_vector_get(u, i));
+	}
+*/
+	printf("step size = %lf \n", h);
 	
-//	gsl_matrix_view m = gsl_matrix_view_array(gsl_mat, N, N);
-	gsl_vector_view b = gsl_vector_view_array(B_data, N);
 	gsl_vector *x = gsl_vector_alloc (N);
 
-	int s;
 
-	gsl_permutation * p = gsl_permutation_alloc (N);
-	gsl_linalg_LU_decomp (gsl_mat, p, &s);
-	gsl_linalg_LU_solve (gsl_mat, p, &b.vector, x);
-/*	printf ("x = \n");
-	gsl_vector_fprintf (stdout, x, "%g"); */
+	start = clock();
+	for (i=0;i<100;i++)
+	{
+		gsl_linalg_solve_symm_tridiag(diag, e, b, x);
+	}
+	printf("number of times run = %d \n",i);
+//	printf ("x = \n");
+//	gsl_vector_fprintf (stdout, x, "%g");
 	
 	stop = clock();
 	
-	for (i=0;i<N;i++)
-	{
+//	for (i=0;i<N;i++)
+//	{
 //		printf("%d",i);
-		fprintf(out_ptr,"%lf %lf %lf \n", a+i*h, U_data[i],gsl_vector_get(x,i));
+//		fprintf(out_ptr,"%lf %lf %lf \n", a+i*h, gsl_vector_get(x,i), gsl_vector_get(u,i));
 //		printf("\n");
-	}
+//	}
 
-	gsl_permutation_free (p);
-	gsl_vector_free (x);
-	
-	gsl_matrix_free(gsl_mat);
-	
-	fclose(out_ptr);
+	printf("for N = %d, time taken is %e \n", N, (double)(stop-start)/(CLOCKS_PER_SEC));
 
-	printf("%d, %e \n", N, (double)(stop-start)/(CLOCKS_PER_SEC));
+	gsl_vector_free (x);	
+	gsl_vector_free (diag);
+	gsl_vector_free (e);
+	gsl_vector_free (u);
 
+//	fclose(out_ptr);
 	return (0);
 }
 

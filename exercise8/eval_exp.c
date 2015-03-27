@@ -9,6 +9,9 @@ double sum_stepwise(double, int);
 int
 main (void)
 {
+	FILE *out_ptr;
+	char filename[100];
+
 	double x;
 	double N;
 
@@ -16,24 +19,36 @@ main (void)
 
 	double fact;
 	double est_series;
+	double rel_err_series;
 	double est_stepwise;
+	double rel_err_stepwise;
 	double actual;
 
 //	x = .1;
 	for (x=0.1;x<101;x=x*10)
 	{
+		sprintf(filename, "file_%lf.dat", x);
+		out_ptr = fopen(filename,"w");
+
 		printf("when x =%lf \n",x);
 		actual = exp(-x);
-		for (N=10;N<1000;N=2*N)
+
+		for (N=1;N<50;N++)
 		{
 			est_series = sum_series(x,N);
 			est_stepwise = sum_stepwise(x,N);
-			printf("error =%lf for N= %lf \n", est_series -actual, N);
+			rel_err_series = fabs((est_series -actual)/(est_series +actual));
+			rel_err_stepwise = fabs((est_stepwise-actual)/(est_stepwise+actual));
+/*			printf("error =%lf for N= %lf \n", est_series -actual, N);
 			printf("error =%lf for N= %lf \n", est_stepwise -actual, N);
-	//		printf("%lf \n", exp(-x));
+	//		printf("%lf \n", exp(-x));*/
+			fprintf(out_ptr,"%lf %lf %lf %lf\n", rel_err_series, rel_err_stepwise, actual, N);
 		}
+
 		printf("actual value= %lf \n",actual);
 	}
+
+	fclose(out_ptr);
 	return(0);
 }
 
