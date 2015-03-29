@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 a = 0.
 b = 1.
-N = 1000
+N = 100
 
 A = np.zeros([N,N])
 B = np.zeros(N)
@@ -33,10 +33,12 @@ print a+i*h, b
 #print A, '\n', B, '\n'
 
 X = spalg.solve(A,B)
-
+X1 = np.dot(spalg.inv(A),B)
+#or np.linalg.inv(A)
 #print X, '\n', U
 
 plt.hold(True)
 plt.plot(np.linspace(a,b,N,endpoint=True),U)
-plt.plot(np.linspace(a,b,N,endpoint=True),X)
+plt.plot(np.linspace(a,b,N,endpoint=True),X,'+')
+plt.plot(np.linspace(a,b,N,endpoint=True),X1,'--')
 plt.show()
