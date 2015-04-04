@@ -43,13 +43,15 @@ main(void)
 
 float f(float x)
 {
-	return sin(x);
+//	return sin(x);
+	return x*x -4;
 }
 
 float df(float x)
 {
 /*	float h;
 	h = 0.001;
-	return (f(x+h) - f(x-h))/2*h;*/
-	return cos(x);
+	return (f(x+h) - f(x-h))/2*h; dont use numerical derivaties, tis useless!*/
+//	return cos(x);
+	return 2*x;
 }
