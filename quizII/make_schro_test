@@ -1,0 +1,53 @@
+SHELL=/bin/sh
+
+# This file contains a set of rules used by the "make"
+#   command.  This makefile $(MAKEFILE) tells "make" how the
+#   executable schro_solve $(COMMAND) should be created
+#   from the source files $(SRCS) via the object
+#   files $(OBJS) and the header files $(HDRS); type the command:
+#        "make -f make_schro_test"
+#   where make_schro_test should be replaced by the name of
+#   the makefile.
+# 
+# This file also tells make what to do if arguments
+#   follow the "make" command.
+#
+# To remove the OBJS files; type the command:
+#        "make -f make_schro_solve clean"
+#
+# To create a gzipped tar file with name $(COMMAND).tar.gz
+#  containing this makefile and the SRCS files,
+#  type the command:
+#        "make -f make_schro_solve tarz"
+ 
+SRCS= \
+schro_solve.c\
+  
+OBJS= \
+schro_solve.o\
+
+HDRS= \
+
+MAKEFILE= make_schro_test
+
+COMMAND=  schro_solve
+ 
+CC= gcc
+CFLAGS=  -g
+WARNFLAGS= -ansi -pedantic -Werror -Wall \
+   -Wmissing-prototypes -Wstrict-prototypes \
+   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
+   -Wwrite-strings -fno-common -Wnested-externs
+LDFLAGS= -lm -lgsl -lgslcblas
+ 
+$(COMMAND): $(OBJS) 
+	$(CC) -o $(COMMAND) $(OBJS) $(LDFLAGS) $(LIBS) 
+                 
+schro_solve.o : schro_solve.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c schro_solve.c -o schro_solve.o
+	 
+clean:
+	rm -f $(OBJS)
+ 
+tarz:
+	tar zcf - $(MAKEFILE) $(SRCS) $(HDRS) > $(COMMAND).tar.gz
