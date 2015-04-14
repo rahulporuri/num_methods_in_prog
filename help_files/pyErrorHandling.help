@@ -1,0 +1,6 @@
+try:
+	import numpy as np
+except ImportError:
+	print 'numpy library is not installed'
+	print 'we will use the math module from the standard python installation'
+	import math

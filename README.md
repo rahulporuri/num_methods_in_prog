@@ -1,12 +1,73 @@
-solutions to exercises as part of the numerical methods in programming course at IIT Madras.
-to the most extent, solutions are written in c, python and fortran. briefly speaking,
+solutions to exercises as part of the numerical methods in programming course by Prof. Sunethra Ramanan at IIT Madras.
+To the most extent, solutions are written in c, python and fortran.
 
-* additional exercises contain various example codes, one of which is used to estimate the value of pi using monte carlo integration and using the simpson's and trapezoid rules.
+0. exercise0
 
-* exercise0 contains codes to estimate the precision of a system, to convert a number to it's binary equivalent and the various ways in which one can give inputs to a code in all three languages to estimate the area of a circle and how to store output of a code in a file.
-* exercise1 contains codes showing how one give input to a code using file pointers, how to plot data using gnuplot & fitting data using gnuplot and estimating the sum of 1/N
-* exercise2 contains codes showing how to estimate the first and second derivative of a function, how to do function definitions and function calls in C and how to error of the estimate is different for the various methods used to estimate the derivative - forward, backward and center methods. we also show the use of make files to compile codes.
-* exercise3 contains codes showing how to estimate the integration of a function between two points using various methods - trapezoid, simpson and three-eights rule. errors were also estimated using various methods.
-* exercise4 contains codes showing hwo to estimate the integration of a function between two points using the adaptive integration method and we then compare the error in the estimates, using adaptive and using trapezoid methods.
-* exercise5 contains
-* exercise7 contains code showing how to solve second order differential equations using matrix algebra or linear equations.
+* estimating the area of a circle
+** user input using scanf
+** for loop
+** 1D arrays 
+** writing data to files
+
+* convering an integer from base 10 to base 2
+** while loop
+
+* computing machine precision
+
+1. exercise1
+
+* estimating the area of a circle
+** user input using files, use of argc and argv[]
+
+* computes the forward and reverser sum of a given set of numbers and compares error
+
+2. exercise2
+
+* estimate the areas of verious polygons
+** use of functions
+** using make files
+** linking executables and preprocessor directives
+
+* compute the forward and central derivatives of a function
+** computing relative errors
+
+* compute the second derivative of a function
+
+3. exercise3
+
+* compute the forward and central derivatives of a function
+** initializing, loading and using structures
+
+* compute the integral of a function
+** use of header files
+** trapezoidal method, simpsons method and 3/8ths method
+
+4. exercise4
+
+* compute the integral of a function using (a faulty) adaptive method
+
+5. exercise5
+
+* polynomial interpolation (faulty)
+* plotting legendre polynomials using gsl
+** creating files iteratively i.e of type 'file_i.dat'
+
+6. exercise6
+
+* finding the root of a function
+** bisection method, newton-phapson method, secant method
+
+7. exercise7
+
+* solving the equation AX = B
+** various methods of defining matrices
+** using gsl to solve the above equation
+** estimating time taken using time.h and clock_t
+** use of gnuplot .plt files
+
+8. exercise8
+
+* solving the equation AX = B
+** using gsl tridiagonal solver
+
+* compute the value of an exponential using various methods
