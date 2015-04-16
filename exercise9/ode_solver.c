@@ -52,10 +52,15 @@ main(void)
 		x_rk4 += update[0];
 		dx_rk4 += update[1];
 
-		err_eu = fabs((1./2*(x_eu*x_eu +dx_eu*dx_eu) -1./2)/(1./2*(x_eu*x_eu +dx_eu*dx_eu) +1./2));
-		err_eu = fabs((1./2*(x_pc*x_pc +dx_pc*dx_pc) -1./2)/(1./2*(x_pc*x_pc +dx_pc*dx_pc) +1./2));
+/*		err_eu = fabs((1./2*(x_eu*x_eu +dx_eu*dx_eu) -1./2)/(1./2*(x_eu*x_eu +dx_eu*dx_eu) +1./2));
+		err_pc = fabs((1./2*(x_pc*x_pc +dx_pc*dx_pc) -1./2)/(1./2*(x_pc*x_pc +dx_pc*dx_pc) +1./2));
 		err_rk2 = fabs((1./2*(x_rk2*x_rk2 +dx_rk2*dx_rk2) -1./2)/(1./2*(x_rk2*x_rk2 +dx_rk2*dx_rk2) +1./2));
-		err_rk4 = fabs((1./2*(x_rk4*x_rk4 +dx_rk4*dx_rk4) -1./2)/(1./2*(x_rk4*x_rk4 +dx_rk4*dx_rk4) +1./2));
+		err_rk4 = fabs((1./2*(x_rk4*x_rk4 +dx_rk4*dx_rk4) -1./2)/(1./2*(x_rk4*x_rk4 +dx_rk4*dx_rk4) +1./2));*/
+
+		err_eu = fabs((1./2*(x_eu*x_eu +dx_eu*dx_eu) -1./2));
+		err_pc = fabs((1./2*(x_pc*x_pc +dx_pc*dx_pc) -1./2));
+		err_rk2 = fabs((1./2*(x_rk2*x_rk2 +dx_rk2*dx_rk2) -1./2));
+		err_rk4 = fabs((1./2*(x_rk4*x_rk4 +dx_rk4*dx_rk4) -1./2));
 
 		fprintf(soln_ptr, "%lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf \n", t, x_eu, dx_eu, x_pc, dx_pc, x_rk2, dx_rk2, x_rk4, dx_rk4);
 		fprintf(err_ptr, "%lf, %lf, %lf, %lf, %lf \n", t, err_eu, err_pc, err_rk2, err_rk4);

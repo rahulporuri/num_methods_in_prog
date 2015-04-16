@@ -8,14 +8,14 @@ double rk2_stepper(double ,double);
 double rk4_stepper(double ,double);
 
 double dn(double);
-
+// some comments`
 int
 main(void)
 {
 	FILE *err_ptr;
-	FILE *soln_ptr;
+//	FILE *soln_ptr;
 	err_ptr = fopen("err_exp.dat","w");
-	soln_ptr = fopen("exp_solve.dat","w");
+//	soln_ptr = fopen("exp_solve.dat","w");
 	
 	double h, t, N, n_eu, n_pc, n_rk2, n_rk4;
 	double err_eu, err_pc, err_rk2, err_rk4;
@@ -33,12 +33,10 @@ main(void)
 		err_rk2 = 0;
 		err_rk4 = 0;
 
-		h = 1./N;
+		h = 1./(N+1);
 
 		while(t <1)
-		{
-			t += h;
-	
+		{	
 			n_eu += euler_stepper(h, n_eu);
 			n_pc += pc_stepper(h, n_pc);
 			n_rk2 += rk2_stepper(h, n_rk2);
@@ -48,14 +46,16 @@ main(void)
 			err_pc += fabs((n_pc -2*exp(-t))/(n_pc +2*exp(-t)));
 			err_rk2 += fabs((n_rk2 -2*exp(-t))/(n_rk2 +2*exp(-t)));
 			err_rk4 += fabs((n_rk4 -2*exp(-t))/(n_rk4 +2*exp(-t)));
-	
-			fprintf(soln_ptr, "%lf, %lf, %lf, %lf, %lf \n", t, n_eu, n_pc, n_rk2, n_rk4);
+
+			t += h;	
+
+//			fprintf(soln_ptr, "%lf, %lf, %lf, %lf, %lf \n", t, n_eu, n_pc, n_rk2, n_rk4);
 		}
 
-		fprintf(err_ptr, "%lf, %lf, %lf, %lf %lf \n", t, err_eu, err_pc, err_rk2, err_rk4);	
+		fprintf(err_ptr, "%lf, %lf, %lf, %lf %lf \n", N, err_eu, err_pc, err_rk2, err_rk4);	
 	}
 	
-	fclose(soln_ptr);
+//	fclose(soln_ptr);
 	fclose(err_ptr);
 	return(0);
 }
