@@ -71,3 +71,5 @@ exercise8
 	* using gsl tridiagonal solver
 
 * compute the value of an exponential using various methods
+
+the github markdown cheat sheet can be found [here](https://help.github.com/articles/markdown-basics/)
