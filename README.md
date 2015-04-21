@@ -72,4 +72,26 @@ exercise8
 
 * compute the value of an exponential using various methods
 
+exercise9
+
+* solving a first order differential equation
+	* euler, predictor-corrector, rungekutta 2 and 4 solvers
+* solving a second order differential equation
+	* returning multiple values from a function using an array
+
+quizI
+* compute the summation of an alternating positive and negative series in various ways and compute errors
+* compute the integral of a function using a given method, using change of variable, thereby drastically increasing the accuracy of estimate
+
+
+quizII
+* solving the schrodinger equation for a particle in a potential well, to compare eigen values obtained with theoretical results and plot eigen vectors
+	* using the eigenvalue solver in gsl
+
+additional exercises
+
+* runge-kutta 2 and 4 methods to solve the simple and damped harmonic oscillators
+* area of a circle and volume of a sphere using newton-cotes methods and monte carlo integration - comparison of error
+	* use of cpython outside of ipython, creating a shared library from the cpython (.pyx) file and linking
+
 the github markdown cheat sheet can be found [here](https://help.github.com/articles/markdown-basics/)
