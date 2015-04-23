@@ -11,6 +11,8 @@
 int
 main(void)
 {
+	FILE *out_ptr;
+
 	int i,j,t;
 	int N;
 	int s;
@@ -27,29 +29,45 @@ main(void)
 
 	gsl_permutation *p;
 
+	out_ptr = fopen("pde_solvers_test_diffusion_test_cn.dat","w");
+
 	alpha = 1./2;
-	N = 10;
+	N = 50;
 
 	A = gsl_matrix_alloc(N,N);
 	Ainv = gsl_matrix_alloc(N,N);
 	B = gsl_matrix_alloc(N,N);
 
-	T0 = gsl_vector_alloc(N);
-	Ti = gsl_vector_alloc(N);
+	T0 = gsl_vector_alloc(N+2);
+	Ti = gsl_vector_alloc(N+2);
 
 	p = gsl_permutation_alloc(N);
 
+	for (i=0;i<N+2;i++)
+	{
+//		initialize the matrices T0 and Ti - initial time and future time
+		if (i==0)
+		{
+			gsl_vector_set(T0,i,0.);
+			gsl_vector_set(Ti,i,0.);
+		}
+		else if (i==N+1)
+		{
+			gsl_vector_set(T0,i,0.);
+			gsl_vector_set(Ti,i,0.);
+		}
+		else
+		{
+			gsl_vector_set(T0,i,100.);
+			gsl_vector_set(Ti,i,100.);
+		}
+//		gsl_vector_set(T0,i,100.);
+//		initialize the matrix Ti - next time step
+//		gsl_vector_set(Ti,i,100.);
+	}
+
 	for (i=0;i<N;i++)
 	{
-//		initialize the matrix T0 - initial time
-		if (i==0){gsl_vector_set(T0,i,0.);}
-		else if (i==N-1) {gsl_vector_set(T0,i,0.);}
-		else {gsl_vector_set(T0,i,100.);}
-//		initialize the matrix Ti - next time step
-		if (i==0){gsl_vector_set(T0,i,0.);}
-		else if (i==N-1) {gsl_vector_set(T0,i,0.);}
-		else {gsl_vector_set(T0,i,100.);}
-//		initialize the matrices B - implicit operator and I
 		for (j=0;j<N;j++)
 		{
 			if (i==j)
@@ -73,26 +91,34 @@ main(void)
 //	calculate inverse of B - implicit operator
 	gsl_linalg_LU_decomp (A, p, &s);
 	gsl_linalg_LU_invert (A, p, Ainv);
-	printf ("x = \n");
+//	printf ("x = \n");
 //	gsl_matrix_fprintf (stdout, Binv, "%g");
 
 //	matrix product of the operator with T0 to give Ti
 //	gsl_blas_dsymv(CBLAS_TRANSPOSE_t CblasNoTrans, 1.0, Binv,T0,0.0,Ti);
 
-	gsl_vector_fprintf (stdout, T0, "%g");
+//	gsl_vector_fprintf (stdout, T0, "%g");
 
-	for (t=0;t<3;t++)
+	for (t=0;t<1000;t++)
 	{
+//		save the array T0 at this time instant
+		for (j=0;j<N+2;j++)
+		{
+			fprintf(out_ptr,"%d %d %e \n", t, j, gsl_vector_get(T0,j));
+		}
+		
+		fprintf(out_ptr,"\n");		
+		
 		for (i=0;i<N;i++)
 		{
 			temp = 0;
 			for (j=0;j<N;j++)
 			{
 				x = gsl_matrix_get(B,i,j);
-				y = gsl_vector_get(T0,j);
+				y = gsl_vector_get(T0,j+1);
 				temp+= x*y ;
 			}
-			gsl_vector_set(Ti,i,temp);
+			gsl_vector_set(Ti,i+1,temp);
 		}
 
 		for (i=0;i<N;i++)
@@ -101,14 +127,14 @@ main(void)
 			for (j=0;j<N;j++)
 			{
 				x = gsl_matrix_get(Ainv,i,j);
-				y = gsl_vector_get(Ti,j);
+				y = gsl_vector_get(Ti,j+1);
 				temp+= x*y ;
 			}
-			gsl_vector_set(T0,i,temp);
+			gsl_vector_set(T0,i+1,temp);
 		}                                            	
 
-		gsl_vector_fprintf (stdout, T0, "%g");
-		printf("\n");
+//		gsl_vector_fprintf (stdout, T0, "%g");
+//		printf("\n");
 
 //		for (i=0;i<N;i++)
 //		{

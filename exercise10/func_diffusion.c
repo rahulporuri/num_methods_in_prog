@@ -59,7 +59,7 @@ void implicit_update(int N, double alpha, gsl_vector *T0, gsl_vector *Ti)
 	gsl_matrix *Binv;
 
 	B = gsl_matrix_alloc(N,N);
-	Binv = gsl_matric_alloc(N,N);
+	Binv = gsl_matrix_alloc(N,N);
 	p = gsl_permutation_alloc(N);
 
 	for (i=0;i<N;i++)
