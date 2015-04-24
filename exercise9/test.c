@@ -1,3 +1,23 @@
+/*FILE: test.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version:  Original
+
+Revision-History:
+
+Comments:
+
+The following code solves the first order differential equation,
+whose solutions is a negative exponential. We solve the equation
+using euler's method, the predictor-corrector method and the
+2nd order and 4rh order runge-kutta methods and we compare the
+relative errors in the numerical solutions.
+
+***************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,8 +27,8 @@ double pc_stepper(double ,double);
 double rk2_stepper(double ,double);
 double rk4_stepper(double ,double);
 
-double dn(double);
-// some comments`
+double dn(double);		/*this is the differential equation*/
+
 int
 main(void)
 {

@@ -1,3 +1,25 @@
+/*FILE: diffusion_test.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version:  Original
+
+Revision-History:
+
+Comments:
+
+The following file implements the implicit scheme to solve the diffusion equation.
+There are multiple ways to solve this problem, the popular approach being to solve
+the equation AX=B using the gsl linalg tridiagonal solver where
+X is the vector containing temperature at a future time and
+B is the vector containing the temperature values at present.
+Personally, I chose to calculate the inverse of the matrix A and multiply the matrix
+with B to get X. the gsl function invert was used to invert the matrix A.
+
+************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -29,12 +51,12 @@ main(void)
 	N = 50;
 	B = gsl_matrix_alloc(N,N);
 
-	T0 = gsl_vector_alloc(N+2);
+	T0 = gsl_vector_alloc(N+2);		/*note that one can use _calloc to initialize the array with zeros*/
 	Ti = gsl_vector_alloc(N+2);
 
 	for (i=0;i<N+2;i++)
 	{
-//		initialize the matrices T0 and Ti - initial time and future time
+/*	initialize the matrices T0 and Ti - initial time and future time */
 		if (i==0)
 		{
 			gsl_vector_set(T0,i,0.);
@@ -50,12 +72,9 @@ main(void)
 			gsl_vector_set(T0,i,100.);
 			gsl_vector_set(Ti,i,100.);
 		}
-//		gsl_vector_set(T0,i,100.);
-//		initialize the matrix Ti - next time step
-//		gsl_vector_set(Ti,i,100.);
 	}
 
-//		initialize the matrices B - implicit operator
+/*	initialize the matrices B - implicit operator*/
 	for (i=0;i<N;i++)
 	{
 		for (j=0;j<N;j++)
@@ -65,7 +84,12 @@ main(void)
 				else{gsl_matrix_set(B,i,j,0.);}
 			}
 	}
-//	calculate inverse of B - implicit operator
+
+/*	calculate inverse of B - implicit operator*/
+/*	note that it is not standard to define matrices or vectors
+	in the middle of a code. Compiling this code with all flags
+	will throw up a lot of warnings. It is suggested one move these
+	to the beginning of the code. im lazy so you do it */
 	gsl_matrix *Binv = gsl_matrix_alloc (N,N);
 
 	int s;
@@ -73,12 +97,10 @@ main(void)
 	gsl_permutation * p = gsl_permutation_alloc (N);
 	gsl_linalg_LU_decomp (B, p, &s);
 	gsl_linalg_LU_invert (B, p, Binv);
-//	printf ("x = \n");
-//	gsl_matrix_fprintf (stdout, Binv, "%g");
-
 
 //	matrix product of the operator with T0 to give Ti
 //	gsl_blas_dsymv(CBLAS_TRANSPOSE_t CblasNoTrans, 1.0, Binv,T0,0.0,Ti);
+/*	need to figure out how to use blas functions!*/
 
 //	gsl_vector_fprintf (stdout, Ti, "%g");
 

@@ -1,0 +1,61 @@
+SHELL=/bin/sh
+
+# This file contains a set of rules used by the "make"
+#   command.  This makefile $(MAKEFILE) tells "make" how the
+#   executable linear_eqn_solver $(COMMAND) should be created
+#   from the source files $(SRCS) via the object
+#   files $(OBJS) and the header files $(HDRS); type the command:
+#        "make -f make_linear_eqn_solver"
+#   where make_linear_eqn_solver should be replaced by the name of
+#   the makefile.
+# 
+# This file also tells make what to do if arguments
+#   follow the "make" command.
+#
+# To remove the OBJS files; type the command:
+#        "make -f make_linear_eqn_solver clean"
+#
+# To create a gzipped tar file with name $(COMMAND).tar.gz
+#  containing this makefile and the SRCS files,
+#  type the command:
+#        "make -f make_linear_eqn_solver tarz"
+ 
+SRCS= \
+linear_eqn_solver_test.c\
+linear_eqn_solver_lapack.c
+  
+OBJS= \
+linear_eqn_solver_test.o\
+linear_eqn_solver_lapack.o\
+
+HDRS=\
+
+MAKEFILE= make_linear_eqn_solver_test
+
+COMMAND=  linear_eqn_solver_test
+ 
+CC= gcc
+
+WARNFLAGS= -ansi -pedantic -W -Wall -W \
+   -Wmissing-prototypes -Wstrict-prototypes \
+   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
+   -Wwrite-strings -fno-common -Wnested-externs
+
+CFLAGS=  -g
+LDFLAGS= -lblas -llapack -lgsl -lgslcblas -lm
+
+
+$(COMMAND): $(OBJS) 
+	$(CC) -o $(COMMAND) $(OBJS) $(LDFLAGS) $(LIBS)
+                 
+linear_eqn_solver_test.o : linear_eqn_solver_test.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c linear_eqn_solver_test.c -o linear_eqn_solver_test.o
+
+linear_eqn_solver_lapack.o : linear_eqn_solver_lapack.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c linear_eqn_solver_lapack.c -o linear_eqn_solver_lapack.o
+
+clean:
+	rm -f $(OBJS)
+ 
+tarz:
+	tar zcf - $(MAKEFILE) $(SRCS) $(HDRS) > $(COMMAND).tar.gz 

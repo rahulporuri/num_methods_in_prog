@@ -1,3 +1,25 @@
+/*FILE: cn_diffusion_test.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version:  Original
+
+Revision-History:
+
+Comments:
+
+The following file implements the crank-nicholson scheme to solve the diffusion equation.
+There are multiple ways to solve this problem, the popular approach being to solve
+the equation AX=BY using the gsl linalg tridiagonal solver where
+X is the vector containing temperature at a future time,
+Y is the vector containing the temperature values at present.
+Personally, I chose to calculate the inverse of the matrix A and multiply the matrix
+with BY to get X. the gsl function invert was used to invert the matrix A.
+
+************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -45,7 +67,7 @@ main(void)
 
 	for (i=0;i<N+2;i++)
 	{
-//		initialize the matrices T0 and Ti - initial time and future time
+//	initialize the matrices T0 and Ti - initial time and future time
 		if (i==0)
 		{
 			gsl_vector_set(T0,i,0.);
@@ -61,9 +83,6 @@ main(void)
 			gsl_vector_set(T0,i,100.);
 			gsl_vector_set(Ti,i,100.);
 		}
-//		gsl_vector_set(T0,i,100.);
-//		initialize the matrix Ti - next time step
-//		gsl_vector_set(Ti,i,100.);
 	}
 
 	for (i=0;i<N;i++)
@@ -132,14 +151,6 @@ main(void)
 			}
 			gsl_vector_set(T0,i+1,temp);
 		}                                            	
-
-//		gsl_vector_fprintf (stdout, T0, "%g");
-//		printf("\n");
-
-//		for (i=0;i<N;i++)
-//		{
-//			gsl_vector_set(T0,i,gsl_vector_get(Ti,i));
-//		}
 	}
 	return (0);
 }

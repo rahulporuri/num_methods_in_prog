@@ -1,3 +1,22 @@
+/*FILE: test_gsl.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version:  Original
+
+Revision-History:
+
+Comments:
+
+The following program solves the linear equations
+AX = B using the gsl tridiagonal solver. To be specific,
+we are solving the poisson equation given a charge
+distribution.
+
+***************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -6,23 +25,23 @@
 #include <gsl/gsl_linalg.h>
 #include <gsl/gsl_matrix.h>
 
-double fn(double x);
-double un(double x);
+double fn(double x);		/*the charge distrubution*/
+double un(double x);		/*the analytical solution*/
 
 int
 main(void)
 {
 	clock_t start, stop; 
 	
-//	FILE *out_ptr;
-//	out_ptr = fopen("test_gsl_100000.dat","w");
+	FILE *out_ptr;
+	out_ptr = fopen("test_gsl_100000.dat","w");
 		
-	int N=500000;
+	int N=5000;
 
-	gsl_vector *diag;
-	gsl_vector *e;
-	gsl_vector *u;
-	gsl_vector *b;
+	gsl_vector *diag;	/*stores the diagonal elements of the matrix*/
+	gsl_vector *e;		/*stores the off diagonal elements of the matrix*/
+	gsl_vector *u;		/*stores the analytical result*/
+	gsl_vector *b;		/*stores the numerical result*/
 
 //	double B_data[N];
 //	double U_data[N];
@@ -66,7 +85,6 @@ main(void)
 	
 	gsl_vector *x = gsl_vector_alloc (N);
 
-
 	start = clock();
 	for (i=0;i<100;i++)
 	{
@@ -78,12 +96,12 @@ main(void)
 	
 	stop = clock();
 	
-//	for (i=0;i<N;i++)
-//	{
-//		printf("%d",i);
-//		fprintf(out_ptr,"%lf %lf %lf \n", a+i*h, gsl_vector_get(x,i), gsl_vector_get(u,i));
-//		printf("\n");
-//	}
+	for (i=0;i<N;i++)
+	{
+		printf("%d",i);
+		fprintf(out_ptr,"%lf %lf %lf \n", a+i*h, gsl_vector_get(x,i), gsl_vector_get(u,i));
+		printf("\n");
+	}
 
 	printf("for N = %d, time taken is %e \n", N, (double)(stop-start)/(CLOCKS_PER_SEC));
 

@@ -1,3 +1,22 @@
+/*FILE: ode_solver.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version:  Original
+
+Revision-History:
+
+Comments:
+
+The following file solves the second order differential equation representing
+a simple harmonic oscillator with k=1 and m=1. The error in the numerical solutions
+obtained by solving the equation using Euler's method, the Predictor-Corrector method
+and Runge-Kutta order 2 and order 4 methods are compared to one another.
+
+***********************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -19,7 +38,7 @@ main(void)
 	double x_eu, dx_eu, x_pc, dx_pc, x_rk2, dx_rk2, x_rk4, dx_rk4;
 	double err_eu, err_pc, err_rk2, err_rk4;
 	double h;
-	double update[2];
+	double update[2];	/*used to store the values to update x and dx*/
 
 	h = 0.1;
 	t = 0;

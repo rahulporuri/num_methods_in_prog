@@ -1,3 +1,28 @@
+/*FILE: schro_solve.c
+
+Programer: Poruri Sai Rahul rahul.poruri@gmail.com
+
+Date: Apr 2015
+
+Version: Original
+
+Revision-History:
+
+Comments:
+
+The following code uses gsl matrices to solve an eigen value and eigen vector
+problem. Specifically, we solve the schrodinger equation for a particle in a
+box potential. We calculate the relative error in the least eigenvalue and we
+plot the corresponding eigenvector.
+
+We also estimate the time it takes for the function to run, which is dependent
+on the size of the matrices we are working with.
+
+In due process, we also write files iteratively, naming them as file_i where i
+is a loop variable.
+
+************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,13 +36,13 @@
 int
 main (void)
 {
-	clock_t start, stop; 
+	clock_t start, stop;				/*to keep track of time it takes for the code to run*/ 
 
 	int i, j;
 	int N;
 	double h;
 
-	char filename[100];
+	char filename[100];				/*used to name the files iteratively*/
 
 	FILE *eigen_values;
 	FILE *eigen_vecs;
@@ -38,7 +63,7 @@ main (void)
 		gsl_mat = gsl_matrix_alloc(N, N);
 		eval = gsl_vector_alloc(N);
 		evec = gsl_matrix_alloc (N, N);
-		w = gsl_eigen_symmv_alloc (N);
+		w = gsl_eigen_symmv_alloc (N)
 
 		for(i = 0; i < N; i ++)
 		{
@@ -78,8 +103,8 @@ main (void)
 		{
 			for (j=0;j<100;j++)
 			{
-				gsl_eigen_symmv (gsl_mat, eval, evec, w);
-				gsl_eigen_symmv_sort (eval, evec, GSL_EIGEN_SORT_ABS_ASC);
+				gsl_eigen_symmv (gsl_mat, eval, evec, w);			/*computes the eigen values and eigen vectors for the matric gsl_mat*/
+				gsl_eigen_symmv_sort (eval, evec, GSL_EIGEN_SORT_ABS_ASC);	/*sorts them in ascending order of eigen values*/
 			}
 		}
 
@@ -96,12 +121,12 @@ main (void)
 			double eval_i = gsl_vector_get (eval, i);
 /*			gsl_vector_view evec_i = gsl_matrix_column (evec, i);*/
 			printf ("relative error = %g %d\n", (eval_i/(h*h)-M_PI*M_PI)/(eval_i/(h*h)+M_PI*M_PI), N);
-			fprintf (eigen_values, "%g %d \n", (eval_i/(h*h)-M_PI*M_PI)/(eval_i/(h*h)+M_PI*M_PI), N);
+			fprintf (eigen_values, "%g %d \n", (eval_i/(h*h)-M_PI*M_PI)/(eval_i/(h*h)+M_PI*M_PI), N);	/*relative error of lowest eigen value*/
 /*			printf ("eigenvector = \n");*/
 /*			gsl_vector_fprintf (eigen_vecs, x, &evec_i.vector, "%g %g \n");*/
 			for (i=1;i<N;i++)
 			{
-				fprintf(eigen_vecs,"%g %g \n", i*h, gsl_matrix_get(evec,0,i)/sqrt(h));
+				fprintf(eigen_vecs,"%g %g \n", i*h, gsl_matrix_get(evec,0,i)/sqrt(h));			/*saving the corresponding eigen vector*/
 			}
 		}
 
