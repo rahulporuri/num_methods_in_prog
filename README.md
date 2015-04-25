@@ -88,6 +88,15 @@ quizII
 * solving the schrodinger equation for a particle in a potential well, to compare eigen values obtained with theoretical results and plot eigen vectors
 	* using the eigenvalue solver in gsl
 
+exercise10
+
+* solve the diffusion equation
+	* implicit and crank-nicholson methods
+	* matrix inverse using gsl
+
+* use lapack functions to solve the set of linear equations AX=B we solved earlier using gsl.
+	* calling lapack functions from C
+
 additional exercises
 
 * runge-kutta 2 and 4 methods to solve the simple and damped harmonic oscillators
