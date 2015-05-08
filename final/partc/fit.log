@@ -1,0 +1,120 @@
+
+
+*******************************************************************************
+Fri May  8 15:35:05 2015
+
+
+FIT:    data read from './stability_euler.dat' u (log($1)):(log($2))
+        format = x:z
+        #datapoints = 39
+        residuals are weighted equally (unit weight)
+
+function used for fitting: F(x)
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Fri May  8 15:35:09 2015
+
+
+FIT:    data read from './stability_euler.dat' u (log($1)):(log($2))
+        format = x:z
+        #datapoints = 39
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 190.665           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.949152
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 24.7043
+rel. change during last iteration : -1.55487e-10
+
+degrees of freedom    (FIT_NDF)                        : 37
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.817119
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.667683
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = 2.55412          +/- 0.1526       (5.975%)
+b               = -0.173244        +/- 0.1367       (78.88%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b               0.289  1.000 
+
+
+*******************************************************************************
+Fri May  8 15:35:29 2015
+
+
+FIT:    data read from './stability_rk2.dat' u (log($1)):(log($2))
+        format = x:z
+        #datapoints = 39
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Fri May  8 15:35:35 2015
+
+
+FIT:    data read from './stability_rk2.dat' u (log($1)):(log($2))
+        format = x:z
+        #datapoints = 39
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 631.252           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.949152
+
+initial set of free parameter values
+
+c               = 1
+d               = 1
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 0.68953
+rel. change during last iteration : -1.30208e-08
+
+degrees of freedom    (FIT_NDF)                        : 37
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.136514
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.018636
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+c               = 3.12228          +/- 0.0255       (0.8166%)
+d               = -2.03735         +/- 0.02283      (1.121%)
+
+
+correlation matrix of the fit parameters:
+
+               c      d      
+c               1.000 
+d               0.289  1.000 

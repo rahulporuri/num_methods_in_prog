@@ -1,0 +1,57 @@
+SHELL=/bin/sh
+
+# This file contains a set of rules used by the "make"
+#   command.  This makefile $(MAKEFILE) tells "make" how the
+#   executable integ_test $(COMMAND) should be created
+#   from the source files $(SRCS) via the object
+#   files $(OBJS) and the header files $(HDRS); type the command:
+#        "make -f make_integ_test"
+#   where make_integ_test should be replaced by the name of
+#   the makefile.
+# 
+# This file also tells make what to do if arguments
+#   follow the "make" command.
+#
+# To remove the OBJS files; type the command:
+#        "make -f make_integ_test clean"
+#
+# To create a gzipped tar file with name $(COMMAND).tar.gz
+#  containing this makefile and the SRCS files,
+#  type the command:
+#        "make -f make_integ_test tarz"
+ 
+SRCS= \
+stability_rk2.c
+  
+OBJS= \
+stability_rk2.o
+
+HDRS=
+
+MAKEFILE= make_test
+
+COMMAND=  test_rk2
+ 
+CC= gcc
+CFLAGS=  -g
+WARNFLAGS= -ansi -pedantic -W -Wall -W \
+   -Wmissing-prototypes -Wstrict-prototypes \
+   -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
+   -Wwrite-strings -fno-common -Wnested-externs
+LDFLAGS= -lm
+ 
+$(COMMAND): $(OBJS) 
+	$(CC) -o $(COMMAND) $(OBJS) $(LDFLAGS) $(LIBS)
+                 
+stability.o : stability.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c stability.c -o stability.o
+
+stability_rk2.o : stability_rk2.c
+	$(CC) $(CFLAGS) $(WARNFLAGS)  -c stability_rk2.c -o stability_rk2.o
+
+clean:
+	rm -f $(OBJS)
+ 
+tarz:
+	tar zcf - $(MAKEFILE) $(SRCS) $(HDRS) > $(COMMAND).tar.gz
+ 
